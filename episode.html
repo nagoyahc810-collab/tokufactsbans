@@ -6,7 +6,7 @@
 <title>Episode - Tokufactsbans</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-  body { background: #0a0a0f; color: #eaeaea; min-height: 100vh; }
+  body { background: #0a0a0f; color: #eaeaea; min-height: 100vh; line-height: 1.6; }
 
   header {
     background: linear-gradient(90deg, #1a0000, #8b0000, #1a0000);
@@ -15,6 +15,7 @@
     border-bottom: 3px solid #ffcc00;
     position: sticky; top: 0; z-index: 100;
     box-shadow: 0 0 25px #ff000080;
+    flex-wrap: wrap; gap: 10px;
   }
   .logo {
     font-size: 1.3rem; font-weight: 900; color: #fff;
@@ -22,264 +23,197 @@
     letter-spacing: 1px; font-style: italic;
   }
   .logo span { color: #ffcc00; }
-  .back {
-    color: #ffcc00; text-decoration: none; font-size: 0.9rem;
-    font-weight: bold;
-  }
+  .nav-head { display: flex; gap: 12px; flex-wrap: wrap; }
+  .nav-head a { color: #ffcc00; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
+  .nav-head a:hover { text-decoration: underline; }
 
   .layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 20px;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px 15px;
+    display: grid; grid-template-columns: 1fr 280px;
+    gap: 25px; max-width: 1200px; margin: auto; padding: 25px 18px;
   }
-  @media (max-width: 800px) {
-    .layout { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
 
-  /* BREADCRUMB */
   .breadcrumb {
-    font-size: 0.78rem;
-    color: #999;
-    margin-bottom: 15px;
+    font-size: 0.78rem; color: #888; margin-bottom: 18px;
   }
-  .breadcrumb a {
-    color: #ffcc00;
-    text-decoration: none;
-  }
-  .breadcrumb span { margin: 0 6px; }
+  .breadcrumb a { color: #ffcc00; text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb span { margin: 0 6px; color: #555; }
 
-  /* HEADER EPISODE */
   .ep-header {
     background: linear-gradient(135deg, #1a0000, #0a0a0f);
-    border: 2px solid #ffcc0040;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
+    border: 2px solid #ffcc0040; border-radius: 15px;
+    padding: 22px; margin-bottom: 22px;
   }
   .ep-header h1 {
-    font-size: 1.2rem;
-    color: #ffcc00;
-    font-style: italic;
-    margin-bottom: 6px;
-    text-shadow: 1px 1px 0 #8b0000;
+    font-size: 1.25rem; color: #ffcc00; font-style: italic;
+    margin-bottom: 8px; line-height: 1.4;
   }
   .ep-header .series-name {
-    color: #ccc;
-    font-size: 0.85rem;
-    margin-bottom: 12px;
+    color: #bbb; font-size: 0.88rem; margin-bottom: 14px;
   }
   .ep-header .series-name b { color: #ffcc00; }
-  .ep-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .ep-meta { display: flex; flex-wrap: wrap; gap: 8px; }
   .ep-meta span {
-    background: #1a1a2e;
-    border: 1px solid #ffcc0040;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.72rem;
-    color: #ccc;
+    background: #1a1a2e; border: 1px solid #ffcc0040;
+    padding: 5px 12px; border-radius: 12px;
+    font-size: 0.75rem; color: #ccc;
   }
 
-  /* THUMBNAIL */
   .thumbnail {
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 2px solid #ffcc00;
-    box-shadow: 0 0 20px #ffcc0060;
-    margin-bottom: 20px;
-    background: #1a1a2e;
+    width: 100%; aspect-ratio: 16/9; border-radius: 12px;
+    overflow: hidden; border: 2px solid #ffcc00;
+    box-shadow: 0 0 20px #ffcc0060; margin-bottom: 22px; background: #1a1a2e;
   }
-  .thumbnail img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
+  .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
 
   .section-title {
-    font-size: 1.05rem; color: #ffcc00; margin-bottom: 12px;
-    border-left: 5px solid #8b0000; padding-left: 10px;
-    font-style: italic;
+    font-size: 1.05rem; color: #ffcc00; margin: 25px 0 12px;
+    border-left: 5px solid #8b0000; padding-left: 10px; font-style: italic;
   }
 
   .ep-sinopsis {
-    background: #1a1a2e;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #ccc;
-    border: 1px solid #ffcc0030;
-    margin-bottom: 25px;
+    background: #1a1a2e; padding: 18px; border-radius: 10px;
+    font-size: 0.88rem; line-height: 1.7; color: #ccc;
+    border: 1px solid #ffcc0030; margin-bottom: 10px;
   }
 
-  /* DOWNLOAD RESOLUSI */
-  .download-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
-    margin-bottom: 25px;
+  /* SUBTITLE CARD */
+  .subtitle-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px; margin-bottom: 15px;
   }
-  .dl-item {
-    background: #1a1a2e;
-    border: 2px solid #ffcc0040;
-    border-radius: 10px;
-    padding: 12px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s;
+  .sub-item {
+    background: #1a1a2e; border: 2px solid #ffcc0040;
+    border-radius: 10px; padding: 14px; text-align: center;
+    text-decoration: none; color: inherit; transition: all 0.3s;
   }
-  .dl-item:hover {
-    border-color: #ffcc00;
-    background: #2a1a1a;
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px #ffcc0060;
+  .sub-item:hover {
+    border-color: #ffcc00; background: #2a1a1a;
+    transform: translateY(-3px); box-shadow: 0 0 15px #ffcc0060;
   }
-  .dl-item .res {
-    color: #ffcc00;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 4px;
+  .sub-item .format {
+    color: #ffcc00; font-weight: bold; font-size: 1.1rem;
+    margin-bottom: 4px; font-style: italic;
   }
-  .dl-item .size {
-    color: #999;
-    font-size: 0.72rem;
-    margin-bottom: 8px;
+  .sub-item .info {
+    color: #999; font-size: 0.72rem; margin-bottom: 10px;
   }
-  .dl-item .dl-btn {
+  .sub-item .btn {
     display: inline-block;
     background: linear-gradient(90deg, #ffcc00, #ff8c00);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 6px;
+    color: #000; font-size: 0.72rem; font-weight: bold;
+    padding: 5px 14px; border-radius: 6px;
   }
 
-  /* MIRROR */
-  .mirror-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 25px;
-  }
+  .mirror-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
   .mirror {
-    background: #1a1a2e;
-    border: 1px solid #ffcc0040;
-    color: #ffcc00;
-    padding: 8px 16px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: bold;
+    background: #1a1a2e; border: 1px solid #ffcc0040;
+    color: #ffcc00; padding: 8px 16px; border-radius: 20px;
+    text-decoration: none; font-size: 0.82rem; font-weight: bold;
     transition: all 0.3s;
   }
-  .mirror:hover {
-    background: #8b0000;
-    border-color: #ffcc00;
-  }
+  .mirror:hover { background: #8b0000; border-color: #ffcc00; }
 
-  /* NAVIGASI EPISODE */
+  /* TONTON RESMI */
+  .tonton-resmi {
+    background: linear-gradient(135deg, #0a1f0a, #0a0a0f);
+    border: 2px solid #4ade8040;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+  }
+  .tonton-resmi h3 {
+    color: #4ade80;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .tonton-resmi p {
+    color: #bbb;
+    font-size: 0.82rem;
+    margin-bottom: 12px;
+  }
+  .tonton-resmi a {
+    display: inline-block;
+    background: linear-gradient(90deg, #4ade80, #16a34a);
+    color: #000;
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.82rem;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  .tonton-resmi a:hover { transform: scale(1.03); }
+
+  /* NAV EPISODE */
   .nav-ep {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 25px;
+    display: flex; justify-content: space-between; gap: 10px; margin-top: 25px;
   }
   .nav-ep a {
-    flex: 1;
-    text-align: center;
-    background: #1a1a2e;
-    color: #ffcc00;
-    padding: 12px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 0.82rem;
-    border: 1px solid #ffcc0040;
-    font-weight: bold;
-    transition: all 0.3s;
+    flex: 1; text-align: center;
+    background: #1a1a2e; color: #ffcc00;
+    padding: 12px; border-radius: 10px;
+    text-decoration: none; font-size: 0.82rem;
+    border: 1px solid #ffcc0040; font-weight: bold; transition: all 0.3s;
   }
   .nav-ep a:hover { background: #8b0000; }
   .nav-ep a small { display: block; color: #999; font-size: 0.7rem; margin-top: 3px; }
-  .nav-ep .disabled {
-    opacity: 0.3;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
+  .nav-ep .disabled { opacity: 0.3; pointer-events: none; flex: 1; }
 
   /* SIDEBAR */
   .sidebar {
-    background: #1a1a2e;
-    border: 1px solid #ffcc0030;
-    border-radius: 15px;
-    padding: 15px;
-    height: fit-content;
-    position: sticky;
-    top: 90px;
+    background: #1a1a2e; border: 1px solid #ffcc0030;
+    border-radius: 15px; padding: 15px;
+    height: fit-content; position: sticky; top: 90px;
   }
   .sidebar h3 {
     font-size: 1rem; color: #ffcc00; margin-bottom: 12px;
-    border-left: 4px solid #8b0000; padding-left: 8px;
-    font-style: italic;
+    border-left: 4px solid #8b0000; padding-left: 8px; font-style: italic;
   }
   .sidebar-list {
     display: flex; flex-direction: column; gap: 6px;
-    max-height: 70vh; overflow-y: auto;
-    padding-right: 5px;
-  }
-  .sidebar-list::-webkit-scrollbar { width: 5px; }
-  .sidebar-list::-webkit-scrollbar-thumb {
-    background: #8b0000; border-radius: 3px;
+    max-height: 70vh; overflow-y: auto; padding-right: 5px;
   }
   .sidebar-item {
     display: flex; gap: 10px; align-items: center;
     padding: 8px 10px; border-radius: 8px;
     background: #0f0f18; text-decoration: none; color: inherit;
-    border: 1px solid #ffcc0020;
-    transition: all 0.3s;
-    font-size: 0.82rem;
+    border: 1px solid #ffcc0020; transition: all 0.3s; font-size: 0.82rem;
   }
-  .sidebar-item:hover {
-    background: #2a1a1a; border-color: #ffcc00;
-  }
-  .sidebar-item.active {
-    background: #8b0000; border-color: #ffcc00; color: #ffcc00; font-weight: bold;
-  }
+  .sidebar-item:hover { background: #2a1a1a; border-color: #ffcc00; }
+  .sidebar-item.active { background: #8b0000; border-color: #ffcc00; color: #ffcc00; font-weight: bold; }
   .sidebar-item .ep-num {
-    background: #8b0000;
-    color: #ffcc00;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.75rem;
-    flex-shrink: 0;
+    background: #8b0000; color: #ffcc00;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 0.75rem; flex-shrink: 0;
   }
-  .sidebar-item.active .ep-num {
-    background: #ffcc00; color: #000;
-  }
-  .sidebar-item-info h4 {
-    font-size: 0.78rem;
-    color: inherit;
-    margin-bottom: 2px;
-  }
+  .sidebar-item.active .ep-num { background: #ffcc00; color: #000; }
+  .sidebar-item-info h4 { font-size: 0.78rem; color: inherit; margin-bottom: 2px; }
   .sidebar-item-info small { font-size: 0.68rem; color: #999; }
 
+  .error-box {
+    background: #2a0a0a; border: 2px solid #ff5555;
+    border-radius: 12px; padding: 25px;
+    color: #ff9999; text-align: center;
+    font-size: 0.9rem; line-height: 1.6;
+    max-width: 600px; margin: 40px auto;
+  }
+  .error-box b { color: #ffcc00; }
+  .error-box a {
+    display: inline-block; margin-top: 15px;
+    background: #ffcc00; color: #000;
+    padding: 10px 25px; border-radius: 8px;
+    text-decoration: none; font-weight: bold;
+  }
+
   footer {
-    text-align: center; padding: 25px 20px;
+    text-align: center; padding: 30px 20px;
     color: #666; font-size: 0.8rem;
-    border-top: 2px solid #ffcc0030; margin-top: 40px;
-    background: #0f0f18;
+    border-top: 2px solid #ffcc0030; margin-top: 50px; background: #0f0f18;
   }
   footer a { color: #ffcc00; text-decoration: none; }
 </style>
@@ -288,7 +222,11 @@
 
 <header>
   <div class="logo">TOKU<span>FACTS</span>BANS</div>
-  <a href="index.html" class="back">← Home</a>
+  <div class="nav-head">
+    <a href="index.html">🏠 Home</a>
+    <a href="genre.html">🎭 Genre</a>
+    <a href="about.html">ℹ️ Tentang</a>
+  </div>
 </header>
 
 <div id="content">
@@ -300,144 +238,144 @@
 </footer>
 
 <script src="data.js"></script>
-
 <script>
-// ====== AMBIL PARAMETER URL ======
 const params = new URLSearchParams(window.location.search);
 const slug = params.get('slug');
 const epNum = parseInt(params.get('ep'));
-
-const list = TOKUFACTSBANS_DATA;
-const series = list.find(s => s.slug === slug);
-
 const content = document.getElementById('content');
 
-if (!series) {
-  content.innerHTML = `
-    <div style="text-align:center;padding:50px 20px;max-width:600px;margin:auto;">
-      <h2 style="color:#ffcc00;margin-bottom:15px;">❌ Series tidak ditemukan</h2>
-      <a href="index.html" style="background:#ffcc00;color:#000;padding:10px 25px;border-radius:8px;text-decoration:none;font-weight:bold;">← Kembali ke Home</a>
-    </div>
-  `;
+if (typeof TOKUFACTSBANS_DATA === 'undefined') {
+  content.innerHTML = '<div class="error-box"><b>❌ Data gagal dimuat</b><br><br><a href="index.html">← Kembali ke Beranda</a></div>';
 } else {
-  const episode = series.episodes.find(e => e.ep === epNum);
+  const list = TOKUFACTSBANS_DATA;
+  const series = list.find(s => s.slug === slug);
 
-  if (!episode) {
-    content.innerHTML = `
-      <div style="text-align:center;padding:50px 20px;max-width:600px;margin:auto;">
-        <h2 style="color:#ffcc00;margin-bottom:15px;">❌ Episode tidak ditemukan</h2>
-        <p style="color:#999;margin-bottom:20px;">Episode ${epNum} tidak tersedia untuk ${series.judul}.</p>
-        <a href="detail.html?slug=${series.slug}" style="background:#ffcc00;color:#000;padding:10px 25px;border-radius:8px;text-decoration:none;font-weight:bold;">← Kembali ke ${series.judul}</a>
-      </div>
-    `;
+  if (!series) {
+    content.innerHTML = '<div class="error-box"><b>❌ Series tidak ditemukan</b><br><br><a href="index.html">← Kembali ke Beranda</a></div>';
   } else {
-    document.title = `${series.judul} - Episode ${episode.ep} - Tokufactsbans`;
+    const episode = (series.episodes || []).find(e => e.ep === epNum);
 
-    // Prev/Next episode
-    const epIdx = series.episodes.findIndex(e => e.ep === epNum);
-    const prevEp = series.episodes[epIdx - 1] || null;
-    const nextEp = series.episodes[epIdx + 1] || null;
+    if (!episode) {
+      content.innerHTML = `<div class="error-box"><b>❌ Episode tidak ditemukan</b><br><br><a href="detail.html?slug=${series.slug}">← Kembali ke ${series.judul}</a></div>`;
+    } else {
+      document.title = `${series.judul} - Episode ${episode.ep} - Tokufactsbans`;
+      const epIdx = series.episodes.findIndex(e => e.ep === epNum);
+      const prevEp = series.episodes[epIdx - 1] || null;
+      const nextEp = series.episodes[epIdx + 1] || null;
 
-    // Download HTML
-    let downloadHTML = '';
-    if (episode.downloads && episode.downloads.length > 0) {
-      episode.downloads.forEach(d => {
-        downloadHTML += `
-          <a class="dl-item" href="${d.link}" target="_blank">
-            <div class="res">${d.resolusi}</div>
-            <div class="size">${d.size}</div>
-            <span class="dl-btn">⬇ Download</span>
+      // Subtitle HTML
+      let subtitleHTML = '';
+      if (episode.subtitles && episode.subtitles.length > 0) {
+        episode.subtitles.forEach(sub => {
+          subtitleHTML += `
+            <a class="sub-item" href="${sub.link}" target="_blank">
+              <div class="format">${sub.format}</div>
+              <div class="info">${sub.bahasa} • ${sub.size}</div>
+              <span class="btn">⬇ Unduh Subtitle</span>
+            </a>
+          `;
+        });
+      } else {
+        subtitleHTML = '<p style="color:#999;font-size:0.85rem;">Subtitle belum tersedia untuk episode ini.</p>';
+      }
+
+      // Mirror HTML
+      let mirrorHTML = '';
+      if (episode.mirrors && episode.mirrors.length > 0) {
+        episode.mirrors.forEach(m => {
+          mirrorHTML += `<a class="mirror" href="${m.link}" target="_blank">🔗 ${m.nama}</a>`;
+        });
+      } else {
+        mirrorHTML = '<p style="color:#999;font-size:0.82rem;">Belum ada mirror.</p>';
+      }
+
+      // Tonton Resmi HTML
+      let tontonHTML = '';
+      if (series.tontonResmi && series.tontonResmi.length > 0) {
+        let links = '';
+        series.tontonResmi.forEach(t => {
+          links += `<a href="${t.link}" target="_blank">▶ ${t.nama}</a>`;
+        });
+        tontonHTML = `
+          <div class="tonton-resmi">
+            <h3>🎬 Tonton dari Sumber Resmi</h3>
+            <p>Dukung para kreator dengan menonton serial ini dari platform resmi. Video asli bukan milik kami.</p>
+            ${links}
+          </div>
+        `;
+      }
+
+      // Sidebar
+      let sidebarHTML = '';
+      series.episodes.forEach(e => {
+        const isActive = e.ep === epNum ? 'active' : '';
+        sidebarHTML += `
+          <a href="episode.html?slug=${series.slug}&ep=${e.ep}" class="sidebar-item ${isActive}">
+            <div class="ep-num">${e.ep}</div>
+            <div class="sidebar-item-info">
+              <h4>${e.judul}</h4>
+              <small>${e.tanggal}</small>
+            </div>
           </a>
         `;
       });
-    } else {
-      downloadHTML = '<p style="color:#999;">Link download belum tersedia.</p>';
-    }
 
-    // Mirror HTML
-    let mirrorHTML = '';
-    if (episode.mirrors && episode.mirrors.length > 0) {
-      episode.mirrors.forEach(m => {
-        mirrorHTML += `<a class="mirror" href="${m.link}" target="_blank">🔗 ${m.nama}</a>`;
-      });
-    } else {
-      mirrorHTML = '<p style="color:#999;font-size:0.82rem;">Belum ada mirror.</p>';
-    }
+      content.innerHTML = `
+        <div class="layout">
+          <div>
+            <div class="breadcrumb">
+              <a href="index.html">Beranda</a><span>›</span>
+              <a href="detail.html?slug=${series.slug}">${series.judul}</a><span>›</span>
+              Episode ${episode.ep}
+            </div>
 
-    // Sidebar semua episode
-    let sidebarHTML = '';
-    series.episodes.forEach(e => {
-      const isActive = e.ep === epNum ? 'active' : '';
-      sidebarHTML += `
-        <a href="episode.html?slug=${series.slug}&ep=${e.ep}" class="sidebar-item ${isActive}">
-          <div class="ep-num">${e.ep}</div>
-          <div class="sidebar-item-info">
-            <h4>${e.judul}</h4>
-            <small>${e.tanggal}</small>
-          </div>
-        </a>
-      `;
-    });
+            <div class="ep-header">
+              <h1>Episode ${episode.ep} — ${episode.judul}</h1>
+              <div class="series-name">dari series <b>${series.judul}</b></div>
+              <div class="ep-meta">
+                <span>📅 ${episode.tanggal}</span>
+                <span>⏱️ ${episode.durasi}</span>
+                <span>📺 ${series.kategori}</span>
+                <span>📅 ${series.tahun}</span>
+              </div>
+            </div>
 
-    content.innerHTML = `
-      <div class="layout">
-        <!-- KOLOM UTAMA -->
-        <div>
-          <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>›</span>
-            <a href="detail.html?slug=${series.slug}">${series.judul}</a>
-            <span>›</span>
-            Episode ${episode.ep}
-          </div>
+            <div class="thumbnail">
+              <img src="${episode.thumbnail}" alt="${episode.judul}">
+            </div>
 
-          <div class="ep-header">
-            <h1>Episode ${episode.ep} - ${episode.judul}</h1>
-            <div class="series-name">dari series <b>${series.judul}</b></div>
-            <div class="ep-meta">
-              <span>📅 ${episode.tanggal}</span>
-              <span>⏱️ ${episode.durasi}</span>
-              <span>📺 ${series.kategori}</span>
-              <span>📅 ${series.tahun}</span>
+            <h2 class="section-title">📖 Sinopsis Episode</h2>
+            <div class="ep-sinopsis">${episode.sinopsis}</div>
+
+            <h2 class="section-title">💬 Subtitle Indonesia</h2>
+            <div class="subtitle-list">${subtitleHTML}</div>
+
+            <h2 class="section-title">🔗 Mirror Subtitle</h2>
+            <div class="mirror-list">${mirrorHTML}</div>
+
+            ${tontonHTML}
+
+            <div class="nav-ep">
+              ${prevEp 
+                ? `<a href="episode.html?slug=${series.slug}&ep=${prevEp.ep}">← Episode ${prevEp.ep}<small>${prevEp.judul}</small></a>` 
+                : '<span class="disabled"></span>'}
+              ${nextEp 
+                ? `<a href="episode.html?slug=${series.slug}&ep=${nextEp.ep}">Episode ${nextEp.ep} →<small>${nextEp.judul}</small></a>` 
+                : '<span class="disabled"></span>'}
+            </div>
+
+            <div class="nav-ep" style="margin-top:15px;">
+              <a href="detail.html?slug=${series.slug}">📺 Kembali ke ${series.judul}</a>
             </div>
           </div>
 
-          <div class="thumbnail">
-            <img src="${episode.thumbnail}" alt="${episode.judul}">
-          </div>
-
-          <h2 class="section-title">📖 Sinopsis Episode</h2>
-          <div class="ep-sinopsis">${episode.sinopsis}</div>
-
-          <h2 class="section-title">📥 Download Per Resolusi</h2>
-          <div class="download-list">${downloadHTML}</div>
-
-          <h2 class="section-title">🔗 Mirror Link</h2>
-          <div class="mirror-list">${mirrorHTML}</div>
-
-          <div class="nav-ep">
-            ${prevEp 
-              ? `<a href="episode.html?slug=${series.slug}&ep=${prevEp.ep}">← Episode ${prevEp.ep}<small>${prevEp.judul}</small></a>` 
-              : '<span class="nav-ep-a disabled"></span>'}
-            ${nextEp 
-              ? `<a href="episode.html?slug=${series.slug}&ep=${nextEp.ep}">Episode ${nextEp.ep} →<small>${nextEp.judul}</small></a>` 
-              : '<span class="nav-ep-a disabled"></span>'}
-          </div>
-
-          <div class="nav-ep" style="margin-top:15px;">
-            <a href="detail.html?slug=${series.slug}">📺 Kembali ke ${series.judul}</a>
-          </div>
+          <aside class="sidebar">
+            <h3>📥 Daftar Episode</h3>
+            <div class="sidebar-list">${sidebarHTML}</div>
+          </aside>
         </div>
-
-        <!-- SIDEBAR: Daftar Episode -->
-        <aside class="sidebar">
-          <h3>📥 Daftar Episode</h3>
-          <div class="sidebar-list">
-            ${sidebarHTML || '<p style="color:#999;font-size:0.82rem;padding:10px;">Belum ada episode.</p>'}
-          </div>
-        </aside>
-      </div>
-    `;
+      `;
+    }
   }
 }
 </script>

@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tokufactsbans - Fansub Tokusatsu Indonesia</title>
+<title>Tokufactsbans — Fansub Tokusatsu Indonesia</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-  body { background: #0a0a0f; color: #eaeaea; min-height: 100vh; }
+  body { background: #0a0a0f; color: #eaeaea; min-height: 100vh; line-height: 1.6; }
+
   header {
     background: linear-gradient(90deg, #1a0000, #8b0000, #1a0000);
     padding: 15px 20px;
@@ -25,23 +26,27 @@
   nav { display: flex; gap: 12px; flex-wrap: wrap; }
   nav a { color: #ccc; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
   nav a:hover { color: #ffcc00; }
+
   .hero {
-    text-align: center; padding: 35px 20px;
+    text-align: center; padding: 40px 20px;
     background: radial-gradient(circle at center, #3d0000, #0a0a0f);
     border-bottom: 2px solid #ffcc0040;
   }
   .hero h1 {
-    font-size: 1.8rem; color: #ffcc00;
+    font-size: 1.9rem; color: #ffcc00;
     text-shadow: 2px 2px 0 #8b0000, 0 0 20px #ffcc00;
-    margin-bottom: 8px; font-style: italic;
+    margin-bottom: 10px; font-style: italic;
   }
   .hero p { color: #bbb; font-size: 0.9rem; }
-  .search-box { margin-top: 18px; max-width: 500px; margin: 18px auto 0; }
+
+  .search-box { margin-top: 20px; max-width: 500px; margin: 20px auto 0; }
   .search-box input {
     width: 100%; padding: 12px 18px; border-radius: 25px;
     border: 2px solid #ffcc00; background: #1a1a2e; color: #fff;
     font-size: 1rem; outline: none;
   }
+  .search-box input:focus { box-shadow: 0 0 15px #ffcc00; }
+
   .kategori {
     display: flex; gap: 8px; padding: 15px; overflow-x: auto;
     scrollbar-width: none; background: #0f0f18;
@@ -58,14 +63,14 @@
     background: #8b0000; color: #ffcc00;
     border-color: #ffcc00; box-shadow: 0 0 12px #ffcc0080;
   }
+
   .container { padding: 20px 15px; max-width: 1100px; margin: auto; }
   .section-title {
     font-size: 1.1rem; color: #ffcc00; margin-bottom: 15px;
     border-left: 5px solid #8b0000; padding-left: 10px; font-style: italic;
   }
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
     gap: 12px;
   }
   .card {
@@ -92,6 +97,7 @@
   }
   .badge.ongoing { background: #4ade80; color: #000; }
   .badge.completed { background: #8b0000; color: #ffcc00; }
+
   .error-box {
     background: #2a0a0a; border: 2px solid #ff5555;
     border-radius: 12px; padding: 20px;
@@ -99,16 +105,31 @@
     grid-column: 1 / -1; font-size: 0.9rem; line-height: 1.6;
   }
   .error-box b { color: #ffcc00; }
+
+  .pengantar {
+    background: #1a1a2e; border: 1px solid #ffcc0030;
+    border-radius: 12px; padding: 18px;
+    font-size: 0.85rem; color: #ccc;
+    margin: 20px 15px; max-width: 1100px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .pengantar b { color: #ffcc00; }
+
   .disclaimer {
     background: #1a0a0a; border: 1px solid #8b0000;
-    border-radius: 10px; padding: 12px; font-size: 0.75rem;
+    border-radius: 10px; padding: 14px; font-size: 0.78rem;
     color: #bbb; margin: 20px 15px; text-align: center;
+    max-width: 1100px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
   }
   .disclaimer b { color: #ffcc00; }
+
   footer {
-    text-align: center; padding: 25px 20px;
+    text-align: center; padding: 30px 20px;
     color: #666; font-size: 0.8rem;
-    border-top: 2px solid #ffcc0030; margin-top: 40px;
+    border-top: 2px solid #ffcc0030; margin-top: 50px;
     background: #0f0f18;
   }
   footer a { color: #ffcc00; text-decoration: none; }
@@ -119,15 +140,15 @@
 <header>
   <div class="logo">TOKU<span>FACTS</span>BANS</div>
   <nav>
-    <a href="index.html">🏠 Home</a>
-    <a href="search.html">🔍 Cari</a>
+    <a href="index.html">🏠 Beranda</a>
     <a href="genre.html">🎭 Genre</a>
+    <a href="about.html">ℹ️ Tentang</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h1>⚡ TOKUFACTSBANS</h1>
-  <p>Fansub Tokusatsu Subtitle Indonesia</p>
+  <h1>⚡ Tokufactsbans</h1>
+  <p>Subtitle Indonesia untuk para pecinta tokusatsu</p>
   <div class="search-box">
     <input type="text" id="search" placeholder="🔍 Cari Kamen Rider, Sentai, Ultraman...">
   </div>
@@ -142,16 +163,25 @@
 </div>
 
 <div class="container">
-  <h2 class="section-title" id="sectionTitle">📺 Semua Serial</h2>
+  <h2 class="section-title" id="sectionTitle">📺 Semua Series</h2>
   <div class="grid" id="animeGrid"></div>
 </div>
 
+<div class="pengantar">
+  <b>Selamat datang di Tokufactsbans!</b><br>
+  Kami adalah komunitas fans yang menyediakan subtitle Indonesia untuk serial tokusatsu. 
+  Silakan jelajahi koleksi kami, dan jangan lupa tonton video aslinya dari sumber resmi ya.
+</div>
+
 <div class="disclaimer">
-  <b>⚠️ Disclaimer:</b> Tokufactsbans hanya menyediakan subtitle. Kami tidak memiliki hak atas video asli.
+  <b>⚠️ Tentang Hak Cipta:</b> Tokufactsbans hanya menyediakan file subtitle (teks terjemahan), 
+  bukan video. Semua hak atas serial tokusatsu milik Toei Company, Tsuburaya Productions, 
+  dan pemegang lisensi resmi. Dukung kreator dengan menonton dari platform resmi.
 </div>
 
 <footer>
-  © 2025 <a href="index.html">Tokufactsbans</a> — HENSHIN! ⚡
+  © 2025 <a href="index.html">Tokufactsbans</a> — Dibuat dengan ❤️ oleh fans, untuk fans. <br>
+  <span style="color:#8b0000;">HENSHIN! ⚡</span>
 </footer>
 
 <script src="data.js"></script>
@@ -159,7 +189,7 @@
 const grid = document.getElementById('animeGrid');
 
 if (typeof TOKUFACTSBANS_DATA === 'undefined') {
-  grid.innerHTML = '<div class="error-box"><b>❌ data.js GAGAL DIMUAT</b><br>Pastikan file ada di folder yang sama.</div>';
+  grid.innerHTML = '<div class="error-box"><b>❌ Data gagal dimuat</b><br>Pastikan file <code>data.js</code> sudah ter-upload.</div>';
 } else {
   const tokusatsuList = TOKUFACTSBANS_DATA;
   let currentFilter = 'all';
@@ -174,7 +204,7 @@ if (typeof TOKUFACTSBANS_DATA === 'undefined') {
     }
     grid.innerHTML = '';
     if (list.length === 0) {
-      grid.innerHTML = '<p style="color:#999;text-align:center;grid-column:1/-1;padding:20px;">Tidak ada serial ditemukan.</p>';
+      grid.innerHTML = '<p style="color:#999;text-align:center;grid-column:1/-1;padding:20px;">Belum ada series di kategori ini.</p>';
       return;
     }
     list.forEach(t => {
@@ -198,7 +228,7 @@ if (typeof TOKUFACTSBANS_DATA === 'undefined') {
     currentFilter = kat;
     document.querySelectorAll('.kat-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    document.getElementById('sectionTitle').textContent = kat === 'all' ? '📺 Semua Serial' : `📺 ${kat}`;
+    document.getElementById('sectionTitle').textContent = kat === 'all' ? '📺 Semua Series' : `📺 ${kat}`;
     renderList();
   };
 
