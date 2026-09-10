@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang - Tokufactsbans</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+  body { background: #0a0a0f; color: #eaeaea; min-height: 100vh; line-height: 1.6; }
+  header {
+    background: linear-gradient(90deg, #1a0000, #8b0000, #1a0000);
+    padding: 15px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid #ffcc00;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 0 25px #ff000080;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .logo {
+    font-size: 1.3rem; font-weight: 900; color: #fff;
+    text-shadow: 2px 2px 0 #8b0000, 0 0 15px #ffcc00;
+    letter-spacing: 1px; font-style: italic;
+  }
+  .logo span { color: #ffcc00; }
+  .nav-head { display: flex; gap: 10px; flex-wrap: wrap; }
+  .nav-head a { color: #ffcc00; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
+  .hero {
+    text-align: center; padding: 35px 20px;
+    background: radial-gradient(circle at center, #3d0000, #0a0a0f);
+    border-bottom: 2px solid #ffcc0040;
+  }
+  .hero h1 {
+    font-size: 1.7rem; color: #ffcc00;
+    text-shadow: 2px 2px 0 #8b0000, 0 0 20px #ffcc00;
+    margin-bottom: 8px; font-style: italic;
+  }
+  .hero p { color: #bbb; font-size: 0.9rem; }
+  .container { max-width: 900px; margin: auto; padding: 25px 15px; }
+  .section-title {
+    font-size: 1.1rem; color: #ffcc00; margin: 25px 0 12px;
+    border-left: 5px solid #8b0000; padding-left: 10px; font-style: italic;
+  }
+  .card {
+    background: #1a1a2e; border: 1px solid #ffcc0030;
+    border-radius: 12px; padding: 18px;
+    font-size: 0.88rem; line-height: 1.7; color: #ccc;
+    margin-bottom: 12px;
+  }
+  .card b { color: #ffcc00; }
+  .card a { color: #ffcc00; text-decoration: none; }
+  .card a:hover { text-decoration: underline; }
+  .about-header {
+    display: flex; gap: 15px; align-items: center;
+    background: linear-gradient(135deg, #1a0000, #0a0a0f);
+    border: 2px solid #ffcc00; border-radius: 15px;
+    padding: 20px; margin-bottom: 20px;
+    box-shadow: 0 0 25px #ffcc0040;
+  }
+  .about-header .emblem { font-size: 3rem; flex-shrink: 0; }
+  .about-header h2 {
+    color: #ffcc00; font-size: 1.3rem; font-style: italic; margin-bottom: 5px;
+  }
+  .about-header p { color: #bbb; font-size: 0.82rem; }
+  .fitur-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .fitur {
+    background: #1a1a2e; border: 1px solid #ffcc0040;
+    border-radius: 10px; padding: 12px;
+    font-size: 0.82rem; color: #ccc;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .fitur .icon { font-size: 1.3rem; flex-shrink: 0; }
+  .fitur b { color: #ffcc00; display: block; margin-bottom: 3px; }
+  .faq-item {
+    background: #1a1a2e; border: 1px solid #ffcc0040;
+    border-radius: 10px; margin-bottom: 8px; overflow: hidden;
+  }
+  .faq-q {
+    padding: 14px 16px; cursor: pointer;
+    font-weight: bold; color: #ffcc00; font-size: 0.88rem;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  .faq-q:hover { background: #2a1a1a; }
+  .faq-q .arrow {
+    transition: transform 0.3s; font-size: 0.8rem; color: #8b0000;
+  }
+  .faq-item.open .faq-q .arrow { transform: rotate(180deg); color: #ffcc00; }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 16px; font-size: 0.82rem; color: #bbb; line-height: 1.6;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 16px 14px; }
+  .kontak-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .kontak-item {
+    background: #1a1a2e; border: 2px solid #ffcc0040;
+    border-radius: 10px; padding: 15px 10px;
+    text-align: center; text-decoration: none; color: inherit;
+    transition: all 0.3s;
+  }
+  .kontak-item:hover {
+    border-color: #ffcc00; background: #2a1a1a;
+    transform: translateY(-3px); box-shadow: 0 0 15px #ffcc0060;
+  }
+  .kontak-item .icon { font-size: 1.6rem; display: block; margin-bottom: 6px; }
+  .kontak-item .nama { color: #ffcc00; font-weight: bold; font-size: 0.85rem; margin-bottom: 3px; }
+  .kontak-item .detail { color: #999; font-size: 0.72rem; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .stat {
+    background: linear-gradient(135deg, #8b0000, #1a0000);
+    border: 2px solid #ffcc00; border-radius: 12px;
+    padding: 15px; text-align: center;
+  }
+  .stat .angka {
+    color: #ffcc00; font-size: 1.5rem; font-weight: bold; font-style: italic;
+  }
+  .stat .label { color: #ccc; font-size: 0.72rem; margin-top: 4px; }
+  footer {
+    text-align: center; padding: 25px 20px;
+    color: #666; font-size: 0.8rem;
+    border-top: 2px solid #ffcc0030;
+    margin-top: 40px; background: #0f0f18;
+  }
+  footer a { color: #ffcc00; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TOKU<span>FACTS</span>BANS</div>
+  <div class="nav-head">
+    <a href="index.html">🏠 Beranda</a>
+    <a href="genre.html">🎭 Genre</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>ℹ️ Tentang Kami</h1>
+  <p>Kenali lebih dekat Tokufactsbans</p>
+</section>
+
+<div class="container">
+
+  <div class="about-header">
+    <div class="emblem">⚡</div>
+    <div>
+      <h2>Tokufactsbans</h2>
+      <p>Fansub Tokusatsu Subtitle Indonesia — Dibuat oleh fans, untuk fans.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">📖 Tentang Tokufactsbans</h2>
+  <div class="card">
+    <b>Tokufactsbans</b> adalah komunitas fansub yang berfokus pada serial <b>tokusatsu</b> —
+    Kamen Rider, Super Sentai, Ultraman, dan lainnya. Kami menyediakan <b>subtitle Indonesia</b>
+    untuk para penggemar yang ingin menikmati serial favorit dengan terjemahan berkualitas.
+    <br><br>
+    Kami percaya bahwa <b>tokusatsu bukan sekadar tontonan anak-anak</b> — di baliknya ada cerita
+    mendalam, karakter kuat, dan pesan moral yang relevan untuk semua usia.
+  </div>
+
+  <h2 class="section-title">📊 Statistik</h2>
+  <div class="stats-grid" id="statsGrid"></div>
+
+  <h2 class="section-title">✨ Apa yang Kami Tawarkan</h2>
+  <div class="fitur-list">
+    <div class="fitur">
+      <span class="icon">🎬</span>
+      <div><b>Subtitle Berkualitas</b>Terjemahan akurat & natural</div>
+    </div>
+    <div class="fitur">
+      <span class="icon">⚡</span>
+      <div><b>Update Cepat</b>Episode baru tiap minggu</div>
+    </div>
+    <div class="fitur">
+      <span class="icon">📥</span>
+      <div><b>Multi-Format</b>SRT & ASS</div>
+    </div>
+    <div class="fitur">
+      <span class="icon">🔗</span>
+      <div><b>Banyak Mirror</b>Google Drive, Mega, Mediafire</div>
+    </div>
+    <div class="fitur">
+      <span class="icon">📱</span>
+      <div><b>Mobile Friendly</b>Nyaman di HP & komputer</div>
+    </div>
+    <div class="fitur">
+      <span class="icon">💾</span>
+      <div><b>Batch Download</b>Semua subtitle dalam 1 paket</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">📝 Cara Request Series</h2>
+  <div class="card">
+    Mau request series tokusatsu tertentu? Ikuti langkah ini:
+    <br><br>
+    1. Cek dulu apakah series sudah ada di <a href="index.html">halaman utama</a>.
+    <br>
+    2. Kalau belum ada, hubungi kami via salah satu kontak di bawah.
+    <br>
+    3. Sebutkan judul series + tahun rilis.
+    <br>
+    4. Tunggu konfirmasi. Kami akan usahakan sesuai antrean.
+  </div>
+
+  <h2 class="section-title">❓ Pertanyaan Umum (FAQ)</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Apakah Tokufactsbans gratis?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-a">
+      Ya, 100% gratis. Semua subtitle dan link yang kami sediakan bisa diakses tanpa biaya.
+      Kalau ada yang minta bayaran mengatasnamakan Tokufactsbans, itu penipuan.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Apakah subtitle ini legal?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-a">
+      Kami hanya menyediakan <b>subtitle</b> (file teks terjemahan) — bukan video.
+      Video tetap milik Toei, Tsuburaya, dan pemegang lisensi resmi. Kami mendukung
+      pembelian merchandise dan tontonan resmi.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Kenapa link download error?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-a">
+      Link bisa error karena dihapus oleh penyedia hosting. Coba mirror lain dulu.
+      Kalau semua mirror error, hubungi kami — nanti kami upload ulang.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Bagaimana cara berkontribusi?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-a">
+      Kami terbuka untuk translator, timer, encoder, dan typesetter yang mau bantu.
+      Hubungi kami via kontak di bawah, sertakan contoh karya.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Apakah ada grup komunitas?
+      <span class="arrow">▼</span>
+    </div>
+    <div class="faq-a">
+      Ada. Kami punya grup Telegram & Discord untuk diskusi, request, dan update terbaru.
+      Link ada di bagian Kontak.
+    </div>
+  </div>
+
+  <h2 class="section-title">📬 Hubungi Kami</h2>
+  <div class="kontak-grid">
+    <a class="kontak-item" href="#" onclick="alert('Ganti dengan link Telegram Anda');return false;">
+      <span class="icon">💬</span>
+      <div class="nama">Telegram</div>
+      <div class="detail">@tokufactsbans</div>
+    </a>
+    <a class="kontak-item" href="#" onclick="alert('Ganti dengan link Discord Anda');return false;">
+      <span class="icon">🎮</span>
+      <div class="nama">Discord</div>
+      <div class="detail">Tokufactsbans</div>
+    </a>
+    <a class="kontak-item" href="mailto:tokufactsbans@gmail.com">
+      <span class="icon">✉️</span>
+      <div class="nama">Email</div>
+      <div class="detail">tokufactsbans@mail</div>
+    </a>
+    <a class="kontak-item" href="#" onclick="alert('Ganti dengan link Instagram Anda');return false;">
+      <span class="icon">📷</span>
+      <div class="nama">Instagram</div>
+      <div class="detail">@tokufactsbans</div>
+    </a>
+  </div>
+
+  <h2 class="section-title">⚠️ Disclaimer</h2>
+  <div class="card">
+    Tokufactsbans <b>tidak memiliki hak</b> atas serial tokusatsu yang kami sub.
+    Semua hak cipta milik <b>Toei Company</b>, <b>Tsuburaya Productions</b>,
+    dan pemegang lisensi resmi. Kami hanya menyediakan subtitle untuk keperluan
+    penggemar. Jika Anda pemegang hak dan ingin konten dihapus, hubungi kami via email.
+  </div>
+
+</div>
+
+<footer>
+  © 2025 <a href="index.html">Tokufactsbans</a> — HENSHIN! ⚡
+</footer>
+
+<script src="data.js"></script>
+<script>
+if (typeof TOKUFACTSBANS_DATA !== 'undefined') {
+  const list = TOKUFACTSBANS_DATA;
+  const totalSeries = list.length;
+  const totalEpisode = list.reduce((sum, s) => sum + (s.episodes ? s.episodes.length : 0), 0);
+  const totalKategori = new Set(list.map(s => s.kategori)).size;
+  const totalGenre = new Set(list.flatMap(s => s.genre || [])).size;
+
+  const statsGrid = document.getElementById('statsGrid');
+  statsGrid.innerHTML = `
+    <div class="stat"><div class="angka">${totalSeries}</div><div class="label">Series</div></div>
+    <div class="stat"><div class="angka">${totalEpisode}</div><div class="label">Episode</div></div>
+    <div class="stat"><div class="angka">${totalKategori}</div><div class="label">Kategori</div></div>
+    <div class="stat"><div class="angka">${totalGenre}</div><div class="label">Genre</div></div>
+  `;
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
