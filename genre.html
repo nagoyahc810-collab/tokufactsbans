@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genre - Tokufactsbans</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+  body { background: #0a0a0f; color: #eaeaea; min-height: 100vh; }
+  header {
+    background: linear-gradient(90deg, #1a0000, #8b0000, #1a0000);
+    padding: 15px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid #ffcc00;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 0 25px #ff000080;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .logo {
+    font-size: 1.3rem; font-weight: 900; color: #fff;
+    text-shadow: 2px 2px 0 #8b0000, 0 0 15px #ffcc00;
+    letter-spacing: 1px; font-style: italic;
+  }
+  .logo span { color: #ffcc00; }
+  .nav-head { display: flex; gap: 10px; }
+  .nav-head a { color: #ffcc00; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
+  .hero {
+    text-align: center; padding: 30px 20px;
+    background: radial-gradient(circle at center, #3d0000, #0a0a0f);
+    border-bottom: 2px solid #ffcc0040;
+  }
+  .hero h1 {
+    font-size: 1.7rem; color: #ffcc00;
+    text-shadow: 2px 2px 0 #8b0000, 0 0 20px #ffcc00;
+    margin-bottom: 8px; font-style: italic;
+  }
+  .hero p { color: #bbb; font-size: 0.85rem; }
+  .container { max-width: 1100px; margin: auto; padding: 20px 15px; }
+  .genre-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; margin-bottom: 30px;
+  }
+  .genre-card {
+    background: linear-gradient(135deg, #1a1a2e, #0f0f18);
+    border: 2px solid #ffcc0030; border-radius: 12px;
+    padding: 15px 12px; text-align: center;
+    cursor: pointer; transition: all 0.3s;
+    text-decoration: none; color: inherit;
+  }
+  .genre-card:hover {
+    border-color: #ffcc00; box-shadow: 0 0 20px #ffcc0060;
+    transform: translateY(-3px);
+  }
+  .genre-card.active {
+    background: linear-gradient(135deg, #8b0000, #4a0000);
+    border-color: #ffcc00;
+  }
+  .genre-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+  .genre-card .nama { font-size: 0.9rem; color: #ffcc00; font-weight: bold; margin-bottom: 3px; }
+  .genre-card .jumlah { font-size: 0.7rem; color: #999; }
+  .section-title {
+    font-size: 1.1rem; color: #ffcc00; margin-bottom: 15px;
+    border-left: 5px solid #8b0000; padding-left: 10px; font-style: italic;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 12px;
+  }
+  .card {
+    background: #1a1a2e; border-radius: 12px; overflow: hidden;
+    cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid #ffcc0030; text-decoration: none;
+    color: inherit; display: block;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #ffcc0080; border-color: #ffcc00;
+  }
+  .card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #2a2a3e; }
+  .card-info { padding: 10px; }
+  .card-info h3 {
+    font-size: 0.85rem; color: #fff; margin-bottom: 4px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card-info p { font-size: 0.72rem; color: #999; }
+  .badge {
+    display: inline-block; background: #ffcc00; color: #000;
+    font-size: 0.62rem; padding: 2px 7px; border-radius: 4px;
+    margin-top: 6px; font-weight: bold;
+  }
+  .badge.ongoing { background: #4ade80; color: #000; }
+  .badge.completed { background: #8b0000; color: #ffcc00; }
+  .empty { text-align: center; padding: 40px 20px; color: #999; font-size: 0.9rem; grid-column: 1/-1; }
+  footer {
+    text-align: center; padding: 25px 20px;
+    color: #666; font-size: 0.8rem;
+    border-top: 2px solid #ffcc0030; margin-top: 40px; background: #0f0f18;
+  }
+  footer a { color: #ffcc00; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TOKU<span>FACTS</span>BANS</div>
+  <div class="nav-head">
+    <a href="index.html">🏠 Home</a>
+    <a href="search.html">🔍 Cari</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>🎭 Jelajahi Genre</h1>
+  <p>Pilih genre tokusatsu favoritmu</p>
+</section>
+
+<div class="container">
+  <h2 class="section-title">📚 Semua Genre</h2>
+  <div class="genre-grid" id="genreGrid"></div>
+
+  <h2 class="section-title" id="resultTitle">📺 Pilih genre untuk melihat series</h2>
+  <div class="grid" id="resultGrid">
+    <p class="empty">Ketuk salah satu genre di atas untuk melihat series.</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 <a href="index.html">Tokufactsbans</a> — HENSHIN! ⚡
+</footer>
+
+<script src="data.js"></script>
+<script>
+const genreGrid = document.getElementById('genreGrid');
+const resultGrid = document.getElementById('resultGrid');
+const resultTitle = document.getElementById('resultTitle');
+
+if (typeof TOKUFACTSBANS_DATA === 'undefined') {
+  resultGrid.innerHTML = '<p class="empty">❌ data.js gagal dimuat.</p>';
+} else {
+  const semuaSeries = TOKUFACTSBANS_DATA;
+
+  const genreEmoji = {
+    "Action": "⚔️", "Sci-Fi": "🚀", "Tokusatsu": "🦸",
+    "Fantasy": "🐉", "Survival": "🎯", "Mecha": "🤖",
+    "Comedy": "😂", "Dark": "🌑", "Movie": "🎬",
+    "Time Travel": "⏰", "AI": "💻"
+  };
+
+  const genreMap = {};
+  semuaSeries.forEach(s => {
+    (s.genre || []).forEach(g => {
+      if (!genreMap[g]) genreMap[g] = 0;
+      genreMap[g]++;
+    });
+  });
+
+  const genreList = Object.entries(genreMap).sort((a, b) => b[1] - a[1]);
+
+  genreList.forEach(([nama, jumlah]) => {
+    const card = document.createElement('div');
+    card.className = 'genre-card';
+    card.dataset.genre = nama;
+    card.innerHTML = `
+      <span class="emoji">${genreEmoji[nama] || '🎬'}</span>
+      <div class="nama">${nama}</div>
+      <div class="jumlah">${jumlah} series</div>
+    `;
+    card.onclick = () => tampilkanGenre(nama, card);
+    genreGrid.appendChild(card);
+  });
+
+  function tampilkanGenre(nama, cardEl) {
+    document.querySelectorAll('.genre-card').forEach(c => c.classList.remove('active'));
+    if (cardEl) cardEl.classList.add('active');
+
+    const hasil = semuaSeries.filter(s => (s.genre || []).includes(nama));
+    resultTitle.textContent = `📺 Genre: ${nama} (${hasil.length} series)`;
+    resultGrid.innerHTML = '';
+
+    if (hasil.length === 0) {
+      resultGrid.innerHTML = '<p class="empty">Tidak ada series di genre ini.</p>';
+      return;
+    }
+
+    hasil.forEach(s => {
+      const bc = s.status === 'Ongoing' ? 'ongoing' : 'completed';
+      const card = document.createElement('a');
+      card.className = 'card';
+      card.href = `detail.html?slug=${s.slug}`;
+      card.innerHTML = `
+        <img src="${s.gambar}" alt="${s.judul}" loading="lazy">
+        <div class="card-info">
+          <h3>${s.judul}</h3>
+          <p>${s.kategori} • ${s.tahun}</p>
+          <span class="badge ${bc}">${s.status}</span>
+        </div>
+      `;
+      resultGrid.appendChild(card);
+    });
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const genreUrl = params.get('genre');
+  if (genreUrl && genreMap[genreUrl]) {
+    const cardEl = document.querySelector(`.genre-card[data-genre="${genreUrl}"]`);
+    tampilkanGenre(genreUrl, cardEl);
+  }
+}
+</script>
+
+</body>
+</html>
